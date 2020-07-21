@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter/services.dart';
+
 import 'package:casadelcarmen_app/src/classes/login_mixin.dart';
 import 'package:casadelcarmen_app/src/widgets/custom_textfield.dart';
-import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -50,36 +51,23 @@ class _LoginPageState extends State<LoginPage> with LoginMixin {
               ),
               activeColor: Colors.blueGrey,
             ),
-            _rowButtons()
+            MaterialButton(
+              onPressed: () {
+                if (!inProgress) {
+                  inProgress = true;
+                  login(scaffoldKey);
+                }
+              },
+              child: Text(
+                'Iniciar sesión',
+                style: themes.bodyText1,
+              ),
+              color: Colors.white,
+              shape: StadiumBorder(),
+            ),
           ],
         ),
       ),
-    );
-  }
-
-  Row _rowButtons() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        MaterialButton(
-          onPressed: () {},
-          child: Text(
-            'Regístrate',
-            style: themes.bodyText1,
-          ),
-          color: Colors.white,
-          shape: StadiumBorder(),
-        ),
-        MaterialButton(
-          onPressed: () => login(scaffoldKey),
-          child: Text(
-            'Iniciar sesión',
-            style: themes.bodyText1,
-          ),
-          color: Colors.white,
-          shape: StadiumBorder(),
-        ),
-      ],
     );
   }
 }
