@@ -50,36 +50,23 @@ class _LoginPageState extends State<LoginPage> with LoginMixin {
               ),
               activeColor: Colors.blueGrey,
             ),
-            _rowButtons()
+            MaterialButton(
+              onPressed: () {
+                if (!inProgress) {
+                  inProgress = true;
+                  login(scaffoldKey);
+                }
+              },
+              child: Text(
+                'Iniciar sesión',
+                style: themes.bodyText1,
+              ),
+              color: Colors.white,
+              shape: StadiumBorder(),
+            ),
           ],
         ),
       ),
-    );
-  }
-
-  Row _rowButtons() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        MaterialButton(
-          onPressed: () {},
-          child: Text(
-            'Regístrate',
-            style: themes.bodyText1,
-          ),
-          color: Colors.white,
-          shape: StadiumBorder(),
-        ),
-        MaterialButton(
-          onPressed: () => login(scaffoldKey),
-          child: Text(
-            'Iniciar sesión',
-            style: themes.bodyText1,
-          ),
-          color: Colors.white,
-          shape: StadiumBorder(),
-        ),
-      ],
     );
   }
 }
