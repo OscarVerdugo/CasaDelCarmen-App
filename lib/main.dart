@@ -1,8 +1,6 @@
+import 'package:casadelcarmen_app/routes.dart';
+import 'package:casadelcarmen_app/shared_preferences/shared_prefs.dart';
 import 'package:flutter/material.dart';
-
-import 'package:casadelcarmen_app/src/pages/home_page.dart';
-import 'package:casadelcarmen_app/src/pages/login_page.dart';
-import 'package:casadelcarmen_app/src/shared_preferences/shared_prefs.dart';
 
 final _prefs = Prefs();
 void main() async {
@@ -17,10 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Casa del Carmen App',
-      routes: {
-        '/': (BuildContext context) => LoginPage(),
-        'home': (BuildContext context) => HomePage(),
-      },
+      routes: routes,
       // TODO: Una vez se tenga un método para verificar el token cambiar esta condición
       initialRoute: (_prefs.token == null) ? '/' : 'home',
       theme: ThemeData(
