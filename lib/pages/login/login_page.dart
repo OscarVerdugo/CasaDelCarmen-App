@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter/services.dart';
 
-import 'package:casadelcarmen_app/src/classes/login_mixin.dart';
-import 'package:casadelcarmen_app/src/widgets/custom_textfield.dart';
+import 'package:casadelcarmen_app/widgets/custom_textfield.dart';
+
+import 'login_page_mixin.dart';
 
 class LoginPage extends StatefulWidget {
   @override

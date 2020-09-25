@@ -1,8 +1,7 @@
+import 'package:casadelcarmen_app/services/login_provider.dart';
 import 'package:flutter/material.dart';
 
-import 'package:casadelcarmen_app/src/shared_preferences/shared_prefs.dart';
-
-import 'package:casadelcarmen_app/src/providers/login_provider.dart';
+import 'package:casadelcarmen_app/shared_preferences/shared_prefs.dart';
 
 mixin LoginMixin<T extends StatefulWidget> on State<T> {
   final userController = new TextEditingController();
