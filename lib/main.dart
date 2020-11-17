@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
       title: 'Casa del Carmen App',
       routes: routes,
       // TODO: Una vez se tenga un método para verificar el token cambiar esta condición
-      initialRoute: (_prefs.token == null) ? '/' : 'home',
+      // initialRoute: (_prefs.token == null) ? '/' : 'home',
+      initialRoute: '/',
       theme: ThemeData(
         textTheme: TextTheme(
           headline1: TextStyle(

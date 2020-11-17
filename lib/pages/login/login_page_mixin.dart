@@ -1,7 +1,9 @@
-import 'package:casadelcarmen_app/services/login_provider.dart';
+import 'package:casadelcarmen_app/models/profiles_model.dart';
+import 'package:casadelcarmen_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:casadelcarmen_app/shared_preferences/shared_prefs.dart';
+import 'package:casadelcarmen_app/services/login_service.dart';
 
 mixin LoginMixin<T extends StatefulWidget> on State<T> {
   final userController = new TextEditingController();
@@ -44,7 +46,7 @@ mixin LoginMixin<T extends StatefulWidget> on State<T> {
         backgroundColor: Colors.blueGrey,
       ),
     );
-    Map<String, dynamic> resp = await LoginProvider.login(
+    Map<String, dynamic> resp = await LoginService.login(
       user: userController.text,
       password: passwordController.text,
     );
@@ -52,7 +54,13 @@ mixin LoginMixin<T extends StatefulWidget> on State<T> {
     if (resp.containsKey('token')) {
       _prefs.token = resp['token'];
       _prefs.userEmail = userController.text;
-      Navigator.pushNamed(context, 'home');
+      print(resp);
+      List<Profile> listaTemp = new List();
+      resp['profiles'].forEach((profile) {
+        Profile perfilTemp = new Profile.fromJson(profile);
+        listaTemp.add(perfilTemp);
+      });
+      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(listaTemp)));
     } else {
       scaffoldKey.currentState.hideCurrentSnackBar();
       scaffoldKey.currentState.showSnackBar(
